@@ -1,0 +1,57 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "blueshell-run-windows",
+            "type": "docker-run",
+            "dockerRun": {
+                "containerName": "blueshell",
+                "image": "lnk2past/blueshell:latest",
+                "command": "bash",
+                "volumes": [
+                    {
+                        "localPath": "%USERPROFILE%/.ssh",
+                        "containerPath": "/tmp/.ssh"
+                    },
+                    {
+                        "localPath": "%USERPROFILE%/blueshell",
+                        "containerPath": "/root/home/blueshell"
+                    },
+                    {
+                        "localPath": "%USERPROFILE%/.gitconfig",
+                        "containerPath": "/root/.gitconfig"
+                    }
+                ]
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "blueshell-run",
+            "type": "docker-run",
+            "dockerRun": {
+                "containerName": "blueshell",
+                "image": "lnk2past/blueshell:latest",
+                "command": "bash",
+                "volumes": [
+                    {
+                        "localPath": "$HOME/.ssh",
+                        "containerPath": "/tmp/.ssh"
+                    },
+                    {
+                        "localPath": "$HOME/blueshell",
+                        "containerPath": "/root/home/blueshell"
+                    },
+                    {
+                        "localPath": "$HOME/.gitconfig",
+                        "containerPath": "/root/.gitconfig"
+                    }
+                ]
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+    ]
+}
